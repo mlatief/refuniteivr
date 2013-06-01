@@ -1,5 +1,5 @@
 application: refuniteivr
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -9,7 +9,7 @@ handlers:
   static_dir: _twiml
   
 - url: /.*
-  script: refunite.ivr.application
+  script: refunite.ivrapp.app
 
   
 libraries:
