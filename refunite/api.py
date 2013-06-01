@@ -96,9 +96,15 @@ def search(name, genderId, countryOfBirthId):
     return X; 
 
 
-def countryMap(index):
-    returnedValue = 0;
-    return returnedValue;
+#IVR MAPPING
+
+#1 50
+#2 173
+#3 189
+#4  68
+#5 197
+#6 36
+
 
 
 
