@@ -9,7 +9,7 @@ handlers:
   static_dir: _twiml
   
 - url: /.*
-  script: ivr.application
+  script: refunite.ivr.application
 
   
 libraries:
