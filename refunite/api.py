@@ -17,7 +17,7 @@ def Call_API(inputStr):
     
     # URL String Creation.
     URL = 'http://api.ru.istykker.dk' + inputStr;
-    logging.log (logging.INFO, "URL REST --> #" + URL+"#");
+    logging.log (logging.INFO, "URL REST ---> #" + URL+"#");
     # REST API Configurations.
     Realm    = 'api.ru.istykker.dk';
     Username = 'hackathon';
