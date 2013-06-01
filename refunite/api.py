@@ -97,29 +97,8 @@ def search(name, genderId, countryOfBirthId):
 
 
 def countryMap(index):
-  returnedValue=0;
-  switch(index) {
-  case 1:
-    returnedValue= ;
-    break;
-  case 2:
-    returnedValue= ;
-    break;
-  case 3:
-    returnedValue= ;
-    break;
-  case 4:
-    printf("n is a perfect square\n");
-    break;
-  case 5:
-    printf("n is an even number\n");
-    break;
-  default:
-    printf("Only single-digit numbers are allowed\n");
-  break;
-}
-    
-    return;
+    returnedValue = 0;
+    return returnedValue;
 
 
 
