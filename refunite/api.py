@@ -7,7 +7,6 @@ Created on May 31, 2013
 '''
 import urllib2
 import urllib
-
 import json
 import logging
 
@@ -17,9 +16,12 @@ def createProfile (genderID,name,tribe,birthCountryID,MSISDN):
     "Create New Refugee Profile."
 #    Call_API('/profile.json');    
     query_args= {'genderId':genderID,'givenName':name,'tribe':tribe,'birthCountryId':birthCountryID,'cellPhone':MSISDN};
-    return post_API('/profile', query_args);
+    result = post_API('/profile', query_args);
+    newProfileId = result['profile']['id'];
+    return newProfileId; 
 
 def post_API(inputStr, args):
+    "Calls Refugee United Get "
     logging.log(logging.INFO, "Post API");
     URL = 'http://api.ru.istykker.dk' + inputStr + '.json';
 
@@ -53,7 +55,7 @@ def Call_API(inputStr):
     #RESTCall ='/partner.json'
     logging.log(logging.INFO, "call_api");
     # URL String Creation.
-    URL = 'http://api.ru.istykker.dk' + inputStr + ".json";
+    URL = 'http://api.ru.istykker.dk' + inputStr;
     logging.log (logging.INFO, "URL REST ---> #" + URL+"#");
     # REST API Configurations.
     Realm    = 'api.ru.istykker.dk';
@@ -81,32 +83,22 @@ def search(name, genderId, countryOfBirthId):
     "Calls search REST API with Parameters passed."
     logMeIn = "Search for -- > name:" + name + ",genderID:" + genderId + ",Refugee Country:" + countryOfBirthId+".";    
     logging.log(logging.INFO, logMeIn);  
-    return;
+    xxx = "/search.json?name=" + name+ "&countryOfBirthId="+countryOfBirthId+"&genderId="+genderId;
+    returnAPI = Call_API(xxx);
+    #  results, surName,profileid
+    # result['profile']['id']
+    
+    X=[]
+    for row in returnAPI['results']:
+        M = { row['profileid'], row['givenName'], row['age'], row['surName']};
+        X.append(M);        
+    
+    return X; 
 
 
-''''
-Functions::
 
-createRefugeeProfile
-createNewVolunteer
-addNewMissing
-addNewMemo
-reportMatchByRefugee
-reportMatchByVolunteer
-search
-editRefugeeProfile
-editVolanteerProfile
-getOwningVolunteer
-
-.....
-Admin Panel
-
-'''
-
-getOwningVolunteer("354587")
-search("Mohamed","1","SO")
-##XX = createProfile ("2","Marwa","XXX",'SO',"0212001311");
-
-
+### Test Call for functions
+search("Mohamed","3","189")
+XX = createProfile ("2","Mohamed","XXX",'168',"0212001311");
 
 #createProfile (genderID,name,tribe,birthCountryID,MSISDN);
